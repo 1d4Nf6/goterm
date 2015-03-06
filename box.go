@@ -6,6 +6,7 @@ import (
 )
 
 const DEFAULT_BORDER = "- │ ┌ ┐ └ ┘"
+const BORDER_NONE = "           "
 
 // Box allows you to create independent parts of screen, with its own buffer and borders.
 // Can be used for creating modal windows
@@ -49,7 +50,8 @@ func NewBox(width, height int, flags int) *Box {
 	box.Buf = new(bytes.Buffer)
 	box.Width = width
 	box.Height = height
-	box.Border = DEFAULT_BORDER
+	//box.Border = DEFAULT_BORDER
+	box.Border = BORDER_NONE
 	box.PaddingX = 1
 	box.PaddingY = 0
 	box.Flags = flags
@@ -115,6 +117,11 @@ func (b *Box) String() (out string) {
 			line = line + "\n"
 		}
 
+		/*if len(line) > contentWidth-1 {*/
+		//out += line[0:contentWidth]
+		//} else {
+		//out += line
+		/*}*/
 		out += line
 	}
 
